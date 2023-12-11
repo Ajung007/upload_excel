@@ -20,18 +20,47 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/dttot', [DttotController::class, 'index'])->name('dttot.index');
-Route::post('/dttot', [DttotController::class, 'upload'])->name('dttot.upload');
-Route::get('/dttot/delete', [DttotController::class, 'delete'])->name('dttot.delete');
+Route::prefix('dttot')
+->middleware('auth')
+->group(function()
+{
+    Route::get('/', [DttotController::class, 'index'])->name('dttot.index');
+    Route::post('/', [DttotController::class, 'upload'])->name('dttot.upload');
+    Route::get('/delete', [DttotController::class, 'delete'])->name('dttot.delete');
+});
 
-Route::get('/sipendar', [SipendarController::class, 'index'])->name('sipendar.index');
-Route::post('/sipedar', [SipendarController::class, 'upload'])->name('sipendar.upload');
-Route::get('/sipedar/delete', [SipendarController::class, 'delete'])->name('sipendar.delete');
 
-Route::get('/dppspm', [DppspmController::class, 'index'])->name('dppspm.index');
-Route::post('/dppspm', [DppspmController::class, 'upload'])->name('dppspm.upload');
-Route::get('/dppspm/delete', [DppspmController::class, 'delete'])->name('dppspm.delete');
+Route::prefix('sipendar')
+->middleware('auth')
+->group(function()
+{
+    Route::get('/', [SipendarController::class, 'index'])->name('sipendar.index');
+    Route::post('/', [SipendarController::class, 'upload'])->name('sipendar.upload');
+    Route::get('/delete', [SipendarController::class, 'delete'])->name('sipendar.delete');  
+});
 
-Route::get('/newsletter', [NewsletterController::class, 'index'])->name('aml.index');
-Route::post('/newsleter', [NewsletterController::class, 'upload'])->name('aml.upload');
-Route::get('/newsleter/delete', [NewsletterController::class, 'delete'])->name('aml.delete');
+
+Route::prefix('dppspm')
+->middleware('auth')
+->group(function ()
+{
+    Route::get('/', [DppspmController::class, 'index'])->name('dppspm.index');
+    Route::post('/', [DppspmController::class, 'upload'])->name('dppspm.upload');
+    Route::get('/delete', [DppspmController::class, 'delete'])->name('dppspm.delete');
+});
+
+Route::prefix('newsletter')
+->middleware('auth')
+->group(function ()
+{
+    Route::get('/', [NewsletterController::class, 'index'])->name('aml.index');
+    Route::post('/', [NewsletterController::class, 'upload'])->name('aml.upload');
+    Route::get('/delete', [NewsletterController::class, 'delete'])->name('aml.delete');
+});
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
