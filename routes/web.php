@@ -49,6 +49,7 @@ Route::prefix('dppspm')
     Route::get('/delete', [DppspmController::class, 'delete'])->name('dppspm.delete');
 });
 
+
 Route::prefix('newsletter')
 ->middleware('auth')
 ->group(function ()
@@ -57,9 +58,6 @@ Route::prefix('newsletter')
     Route::post('/', [NewsletterController::class, 'upload'])->name('aml.upload');
     Route::get('/delete', [NewsletterController::class, 'delete'])->name('aml.delete');
 });
-
-
-
 
 Auth::routes();
 

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\DataController;
+use App\Http\Controllers\Api\DppspmController;
+use App\Http\Controllers\Api\NewsletterController;
+use App\Http\Controllers\Api\SipendarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::apiResource('/dttot', DataController::class);
+Route::apiResource('/newsletter', NewsletterController::class);
+Route::apiResource('/dppsmp', DppspmController::class);
+Route::apiResource('/sipendar', SipendarController::class);
