@@ -33,5 +33,4 @@ class DttotController extends Controller
 
         return back();
     }
-
 }
