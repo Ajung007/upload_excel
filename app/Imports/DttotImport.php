@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Dttot;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class DttotImport implements ToModel
+class DttotImport implements ToModel, WithHeadingRow
 {
     /**
      * @param array $row
@@ -15,16 +16,15 @@ class DttotImport implements ToModel
     public function model(array $row)
     {
         return new Dttot([
-            'id' => $row[0],
-            'nama' => $row[1],
-            'deskripsi' => $row[2],
-            'terduga' => $row[3],
-            'kode_densus' => $row[4],
-            'tempat_lahir' => $row[5],
-            'tgl_lahir' => $row[6],
-            'wn' => $row[7],
-            'alamat' => $row[8],
-
+            'id' => $row['id'],
+            'nama' => $row['nama'],
+            'deskripsi' => $row['deskripsi'],
+            'terduga' => $row['terduga'],
+            'kode_densus' => $row['kode_densus'],
+            'tempat_lahir' => $row['tempat_lahir'],
+            'tgl_lahir' => $row['tgl_lahir'],
+            'wn' => $row['wn'],
+            'alamat' => $row['alamat'],
         ]);
     }
 }

@@ -27,6 +27,7 @@ Route::prefix('dttot')
     Route::get('/', [DttotController::class, 'index'])->name('dttot.index');
     Route::post('/', [DttotController::class, 'upload'])->name('dttot.upload');
     Route::get('/delete', [DttotController::class, 'delete'])->name('dttot.delete');
+    Route::get('/rekap', [DttotController::class, 'rekap'])->name('dttot.rekap');
 });
 
 

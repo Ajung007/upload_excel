@@ -37,8 +37,8 @@
             <div id="dttot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">dttot:</h6>
-                    <a class="collapse-item" href="buttons.html">Upload Data</a>
-                    <a class="collapse-item" href="cards.html">Rekap Data</a>
+                    <a class="collapse-item" href="{{ route('dttot.index') }}">Upload Data</a>
+                    <a class="collapse-item" href="{{ route('dttot.rekap') }}">Rekap Data</a>
                 </div>
             </div>
         </li>
@@ -85,7 +85,7 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">newslatter:</h6>
-                            <a class="collapse-item" href="buttons.html">Upload Data</a>
+                            <a class="collapse-item" href="{{ route('aml.index') }}">Upload Data</a>
                             <a class="collapse-item" href="cards.html">Rekap Data</a>
                         </div>
                     </div>

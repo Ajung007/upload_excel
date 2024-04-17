@@ -12,23 +12,29 @@ class SipendarController extends Controller
     public function index()
     {
         $data = Sipendar::paginate(10);
-
+        $create = Sipendar::find(1);
         $count = Sipendar::count();
         // dd($data);
 
-        return view('sipendar', ['data' => $data, 'count' => $count]);
+        return view('pages.sipendar.index', ['data' => $data, 'count' => $count, 'create' => $create]);
     }
 
-    public function upload()
+    public function upload(Request $request)
     {
-        Excel::import(new SipendarImport, request()->file('file'));
-        return back();
+        $request->validate([
+            'file' => 'mimes:xls,xlsx|required'
+        ]);
+
+        $path = $request->file('file');
+        $data = Excel::import(new SipendarImport, $path);
+
+        return redirect()->route('sipendar.index')->with('message','Data Berhasil Terupload');
     }
 
     public function delete()
     {
         Sipendar::truncate();
 
-        return back();
+        return redirect()->route('sipendar.index')->with('message','Data Berhasil Terhapus');
     }
 }

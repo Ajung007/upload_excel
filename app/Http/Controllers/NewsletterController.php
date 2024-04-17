@@ -20,6 +20,7 @@ class NewsletterController extends Controller
     public function upload()
     {
         Excel::import(new NewsletterImport, request()->file('file'));
+        
         return back();
     }
     public function delete()

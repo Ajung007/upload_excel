@@ -22,7 +22,7 @@ class DttotDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'dttot.action')
+            // ->addColumn('action', 'dttot.action')
             ->setRowId('id');
     }
 
@@ -62,11 +62,7 @@ class DttotDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+
             Column::make('id'),
             Column::make('nama'),
             Column::make('deskripsi'),
@@ -76,6 +72,11 @@ class DttotDataTable extends DataTable
             Column::make('tgl_lahir'),
             Column::make('wn'),
             Column::make('alamat'),
+            // Column::computed('action')
+            // ->exportable(false)
+            // ->printable(false)
+            // ->width(60)
+            // ->addClass('text-center'),
         ];
     }
 
